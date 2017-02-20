@@ -103,6 +103,10 @@ There are three modes for tooltip's displaying:
 
 Coming soon, it's driving on the freeway built by your stars 😝
 
+## Demo
+
+[demo](http://vue-demo.hsiaosiyuan.com/#/tooltip)
+
 ## Screenshot
 
 <img src="http://og9g58alt.bkt.clouddn.com/tooltip.png" width="500">
