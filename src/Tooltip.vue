@@ -28,11 +28,7 @@ export default {
       type: String,
       default: 'hover'
     },
-    visible: {
-      type: Boolean,
-      default: true
-    },
-    invisible: {
+    value: {
       type: Boolean,
       default: true
     },
@@ -90,13 +86,10 @@ export default {
     }
   },
   watch: {
-    visible(newVal) {
+    value(newVal) {
       if (newVal === true && this.mode === 'manual') {
         this.show()
-      }
-    },
-    invisible(newVal) {
-      if (newVal === true && this.mode === 'click') {
+      } else if (newVal === false && (this.mode === 'manual' || this.mode === 'click')) {
         this.hide()
       }
     }
@@ -259,18 +252,21 @@ export default {
       if (this.mode === 'hover' && evt.type === 'mouseover' ||
         this.mode === 'click' && evt.type === 'click') {
         this.show()
+        this.$emit('input', true)
       }
     },
     autoHideWithMode(evt) {
       if (this.mode === 'hover' && evt.type === 'mouseleave') {
         this.hide()
+        this.$emit('input', false)
       } else if (this.mode === 'click' && evt.type === 'click' && !this.$el.contains(evt.target)) {
         this.hide()
+        this.$emit('input', false)
       }
     }
   },
   mounted() {
-    if (this.mode === 'manual' && this.visible) {
+    if (this.mode === 'manual' && this.value) {
       this.show()
     }
     document.addEventListener('click', this.autoHideWithMode, false)

@@ -1,22 +1,22 @@
 <template>
 <div class="demo">
   <div class="top">
-    <tooltip placement="top-left" :visible="visible" mode="manual">
+    <tooltip placement="top-left" v-model="visible">
       <div slot="outlet" class="test">top left</div>
       <div slot="tooltip">this is top left tip</div>
     </tooltip>
-    <tooltip placement="top" :visible="visible" mode="manual">
+    <tooltip placement="top" v-model="visible">
       <div slot="outlet" class="test">top</div>
       <div slot="tooltip">this is top tip</div>
     </tooltip>
-    <tooltip placement="top-right" :visible="visible" mode="manual">
+    <tooltip placement="top-right" v-model="visible">
       <div slot="outlet" class="test">top right</div>
       <div slot="tooltip">this is top right tip</div>
     </tooltip>
   </div>
 
   <div class="left">
-    <tooltip placement="left-top" :visible="visible" mode="manual">
+    <tooltip placement="left-top" v-model="visible">
       <div slot="outlet" class="test">left top</div>
       <div slot="tooltip">
         <div>this is left top tip</div>
@@ -24,7 +24,7 @@
         <div>line 3</div>
       </div>
     </tooltip>
-    <tooltip placement="left" :visible="visible" mode="manual">
+    <tooltip placement="left" v-model="visible">
       <div slot="outlet" class="test">left</div>
       <div slot="tooltip">
         <div>this is left tip</div>
@@ -32,7 +32,7 @@
         <div>line 3</div>
       </div>
     </tooltip>
-    <tooltip placement="left-bottom" :visible="visible" mode="manual">
+    <tooltip placement="left-bottom" v-model="visible">
       <div slot="outlet" class="test">left bottom</div>
       <div slot="tooltip">
         <div>this is left bottom tip</div>
@@ -43,7 +43,7 @@
   </div>
 
   <div class="right">
-    <tooltip placement="right-top" :visible="visible" mode="manual">
+    <tooltip placement="right-top" v-model="visible">
       <div slot="outlet" class="test">right top</div>
       <div slot="tooltip">
         <div>this is right top tip</div>
@@ -51,7 +51,7 @@
         <div>line 3</div>
       </div>
     </tooltip>
-    <tooltip placement="right" :visible="visible" mode="manual">
+    <tooltip placement="right" v-model="visible">
       <div slot="outlet" class="test">right</div>
       <div slot="tooltip">
         <div>this is right tip</div>
@@ -59,7 +59,7 @@
         <div>line 3</div>
       </div>
     </tooltip>
-    <tooltip placement="right-bottom" :visible="visible" mode="manual">
+    <tooltip placement="right-bottom" v-model="visible">
       <div slot="outlet" class="test">right bottom</div>
       <div slot="tooltip">
         <div>this is right bottom tip</div>
@@ -70,15 +70,15 @@
   </div>
 
   <div class="bottom">
-    <tooltip placement="bottom-left" :visible="visible" mode="manual">
+    <tooltip placement="bottom-left" v-model="visible">
       <div slot="outlet" class="test">bottom left</div>
       <div slot="tooltip">this is bottom left tip</div>
     </tooltip>
-    <tooltip placement="bottom" :visible="visible" mode="manual">
+    <tooltip placement="bottom" v-model="visible">
       <div slot="outlet" class="test">bottom</div>
       <div slot="tooltip">this is bottom tip</div>
     </tooltip>
-    <tooltip placement="bottom-right" :visible="visible" mode="manual">
+    <tooltip placement="bottom-right" v-model="visible">
       <div slot="outlet" class="test">bottom right</div>
       <div slot="tooltip">
         <div>this is bottom right tip</div>
@@ -88,7 +88,7 @@
   </div>
 
   <div class="confirm">
-    <tooltip placement="bottom-left" mode="click" :invisible="invisible">
+    <tooltip placement="bottom-left" mode="click" v-model="visible1">
       <div slot="outlet" class="test">
         Remove
       </div>
@@ -111,13 +111,8 @@ export default {
   data() {
     return {
       visible: false,
-      invisible: false
+      visible1: false
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.visible = true
-    }, 1000)
   },
   methods: {
     handleYes() {
@@ -125,7 +120,7 @@ export default {
     },
     handleNo() {
       alert('No')
-      this.invisible = true
+      this.visible1 = false
     }
   }
 }
