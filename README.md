@@ -38,7 +38,7 @@ There are three modes for tooltip's displaying:
   ```html
   <template>
     <div class="confirm">
-      <tooltip placement="bottom-left" mode="click" :invisible="invisible">
+      <tooltip placement="bottom-left" mode="click" v-model="invisible">
         <div slot="outlet">
           Remove
         </div>
@@ -57,7 +57,7 @@ There are three modes for tooltip's displaying:
   export default {
     data() {
       return {
-        invisible: false
+        invisible: true
       }
     },
     methods: {
