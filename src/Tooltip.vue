@@ -20,7 +20,8 @@ export default {
 
   data() {
     return {
-      arrowStyle: {}
+      arrowStyle: {},
+      isShowing: true
     }
   },
 
@@ -247,13 +248,17 @@ export default {
       return rect
     },
     show() {
+      if (this.isShowing) return
+      this.isShowing = true
       this.tooltipEl.style.display = 'block'
       this.updateArrowStyle()
       this.place()
     },
     hide() {
+      if (!this.isShowing) return
       this.tooltipEl.style.display = 'none'
       this.cbHide !== EMPTY_FN && this.cbHide()
+      this.isShowing = false
     },
     autoShowWithMode(evt) {
       if (this.mode === 'hover' && evt.type === 'mouseover' ||
