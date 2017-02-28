@@ -13,6 +13,8 @@
 </template>
 
 <script>
+const EMPTY_FN = () => {}
+
 export default {
   name: 'Tooltip',
 
@@ -59,6 +61,10 @@ export default {
     arrowHeight: {
       type: Number,
       default: 6
+    },
+    cbHide: {
+      type: Function,
+      default: EMPTY_FN
     }
   },
   computed: {
@@ -247,6 +253,7 @@ export default {
     },
     hide() {
       this.tooltipEl.style.display = 'none'
+      this.cbHide !== EMPTY_FN && this.cbHide()
     },
     autoShowWithMode(evt) {
       if (this.mode === 'hover' && evt.type === 'mouseover' ||
