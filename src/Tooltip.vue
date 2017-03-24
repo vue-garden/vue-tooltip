@@ -261,10 +261,22 @@ export default {
       this.isShowing = false
     },
     autoShowWithMode(evt) {
-      if (this.mode === 'hover' && evt.type === 'mouseover' ||
-        this.mode === 'click' && evt.type === 'click') {
-        this.show()
-        this.$emit('input', true)
+      if (this.mode === 'hover') {
+        if (evt.type === 'mouseover') {
+          this.show()
+          this.$emit('input', true)
+        }
+        return
+      }
+
+      if (this.mode === 'click' && evt.type === 'click') {
+        if (this.isShowing) {
+          this.hide()
+          this.$emit('input', false)
+        } else {
+          this.show()
+          this.$emit('input', true)
+        }
       }
     },
     autoHideWithMode(evt) {
